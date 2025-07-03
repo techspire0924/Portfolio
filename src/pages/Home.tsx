@@ -129,10 +129,6 @@ const Home: React.FC = () => (
       >
         Senior Software Engineer
       </Subtitle>
-      <InfoRow>
-        <InfoItem>kevin.yw.tech@gmail.com</InfoItem>
-        <InfoItem>(689) 264-8831</InfoItem>
-      </InfoRow>
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
