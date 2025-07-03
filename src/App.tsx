@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 import AnimatedBackground from './components/AnimatedBackground.tsx';
 import Header from './components/Header.tsx';
@@ -24,7 +24,7 @@ const MainContainer = styled.main`
 const App: React.FC = () => (
   <>
     <GlobalStyle />
-    <Router>
+    <BrowserRouter>
       <AnimatedBackground />
       <Header />
       <MainContainer>
@@ -38,7 +38,7 @@ const App: React.FC = () => (
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </MainContainer>
-    </Router>
+    </BrowserRouter>
   </>
 );
 
