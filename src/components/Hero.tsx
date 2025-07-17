@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Mail, Phone } from 'lucide-react'
+import { ArrowDown, FileText, Github, Linkedin, Mail, Phone } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   const containerVariants = {
@@ -94,19 +95,31 @@ const Hero = () => {
             scalable cloud-native microservices.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* Call to action */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            className="mt-8 flex flex-wrap gap-4 justify-center"
           >
-            <motion.a
+            <a
               href="#contact"
-              className="px-8 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+              className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium rounded-lg px-6 py-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
             >
-              Get In Touch
-            </motion.a>
+              Contact Me
+            </a>
+            <Link
+              to="/resume"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium rounded-lg px-6 py-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
+            >
+              <FileText size={18} />
+              View Resume
+            </Link>
+          </motion.div>
+
+          {/* Scroll down indicator */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-12 mb-12"
+          >
             <motion.a
               href="#projects"
               className="px-8 py-3 border-2 border-primary-500 text-primary-500 dark:text-primary-400 rounded-full font-semibold hover:bg-primary-500 hover:text-white transition-all duration-300"

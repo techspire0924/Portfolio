@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Github, Linkedin, Mail, Phone, Send } from 'lucide-react'
+import { FileText, Github, Linkedin, Mail, Phone, Send } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -35,6 +36,13 @@ const Contact = () => {
       label: "GitHub",
       href: "https://github.com/techspire0924",
       color: "hover:text-gray-800 dark:hover:text-gray-200"
+    },
+    {
+      icon: <FileText className="w-6 h-6" />,
+      label: "Resume",
+      href: "/resume",
+      isResumeLink: true,
+      color: "hover:text-blue-600 dark:hover:text-blue-400"
     }
   ]
 
@@ -125,19 +133,32 @@ const Contact = () => {
                     Follow Me
                   </h4>
                   <div className="flex space-x-4">
-                    {socialLinks.map((social, index) => (
-                      <motion.a
-                        key={index}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`p-3 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 ${social.color} transition-all duration-200`}
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        {social.icon}
-                      </motion.a>
-                    ))}
+                    {socialLinks.map((social, index) => 
+                      social.isResumeLink ? (
+                        <motion.div
+                          key={index}
+                          className={`p-3 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 ${social.color} transition-all duration-200`}
+                          whileHover={{ scale: 1.1, y: -2 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <Link to={social.href}>
+                            {social.icon}
+                          </Link>
+                        </motion.div>
+                      ) : (
+                        <motion.a
+                          key={index}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`p-3 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 ${social.color} transition-all duration-200`}
+                          whileHover={{ scale: 1.1, y: -2 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          {social.icon}
+                        </motion.a>
+                      )
+                    )}
                   </div>
                 </div>
               </div>
